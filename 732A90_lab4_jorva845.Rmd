@@ -73,7 +73,7 @@ myMH2<-function(nstep,X0,df){
   # step 2:
   for (i in 2:nstep){
     X<-vX[i-1]
-    Y <- as.numeric(floor((dchisq(X+1, df = df))))
+    Y <- as.numeric(floor((rchisq(X+1, df = df))))
     u<-runif(1)
     
     mysample<-rbind(mysample, c(X,Y))
@@ -87,14 +87,17 @@ myMH2<-function(nstep,X0,df){
   }
   
   plot(vN,vX,pch=19,cex=0.3,col="black",xlab="t",ylab="X(t)",main="",ylim=c(min(X0-0.5,-5),max(5,X0+0.5)))
-  abline(h=0)
-  abline(h=1.96)
-  abline(h=-1.96)
+  # abline(h=0)
+  # abline(h=1.96)
+  # abline(h=-1.96)
   
   return(mysample)
 }
 
-myMH2(10000, 10, 1)
+myMH2(1000, 5, 0.1)
+
+
+
 ```
 
 ## 3.
